@@ -18,7 +18,7 @@ pip install -r requirements.txt
 ```
 python -m app
 ```
-## access the game
+## Access the game
 ```
 http://127.0.0.1:5000
 ```
