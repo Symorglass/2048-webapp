@@ -11,4 +11,4 @@ class GameConfig:
     def from_yaml(cls, path: str) -> 'GameConfig':
         with open(path, 'r') as f:
             config_dict = yaml.safe_load(f)
-        return cls(**config_dict) 
+        return cls(**config_dict)
