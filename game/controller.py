@@ -1,10 +1,8 @@
-import logging
+from utils.logger import logger
 from typing import Optional
 from game.board import Board
 from utils.config import GameConfig
 from monitoring.metrics import GameMetrics
-
-logger = logging.getLogger(__name__)
 
 class GameController:
     def __init__(self, config: GameConfig):

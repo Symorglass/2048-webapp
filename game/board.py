@@ -1,11 +1,9 @@
-import logging
+from utils.logger import logger
 from typing import List, Optional, Tuple
 from dataclasses import dataclass
 from game.exceptions import InvalidMoveError
 from monitoring.metrics import GameMetrics
 import random
-
-logger = logging.getLogger(__name__)
 
 @dataclass
 class Position:
