@@ -24,8 +24,6 @@ function updateGrid() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log("Updated Grid:", data.grid);  // ✅ Debugging grid state
-        console.log("Game Over?", data.gameOver); // ✅ Debugging game over state
         renderGrid(data.grid);
         updateScore(data.score);
         if (data.gameOver) {

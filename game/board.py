@@ -16,7 +16,7 @@ class Board:
     def __init__(self, size: int = 4):
         self.size = size
         self.grid = [[0] * size for _ in range(size)]
-        self.score = 0     # total merged score from game
+        self.score = 0     
         self.metrics = GameMetrics()
         logger.info(f"Initialized {size}x{size} board")
         
@@ -32,7 +32,6 @@ class Board:
         pos = random.choice(empty_positions)
         value = 2 if random.random() < 0.9 else 4
         self.grid[pos[0]][pos[1]] = value
-        # self.metrics.record_tile_spawn(value)
         return Position(*pos)
 
     def move(self, direction: str) -> bool:
