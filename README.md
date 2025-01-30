@@ -49,6 +49,51 @@ http://127.0.0.1:5000/metrics
 pytest tests/
 ```
 
+# Architecture
+The overview of the architecture is as follows:
+```mermaid
+flowchart TD
+    subgraph Frontend
+        UI[Browser Interface]
+        Game_JS[game.js]
+        UI <--> Game_JS
+        style UI fill:#f9f,stroke:#333
+        style Game_JS fill:#f9f,stroke:#333
+    end
+
+    subgraph Backend
+        Flask[Flask App]
+        Controller[Game Controller]
+        Board[Board Logic]
+        
+        Flask <--> Controller
+        Controller <--> Board
+        
+        style Flask fill:#bbf,stroke:#333
+        style Controller fill:#bbf,stroke:#333
+        style Board fill:#bbf,stroke:#333
+    end
+
+    subgraph Monitoring
+        Metrics[Prometheus Metrics]
+        Logs[Game Logs]
+        style Metrics fill:#bfb,stroke:#333
+        style Logs fill:#bfb,stroke:#333
+    end
+
+    %% Main Flow
+    Game_JS <-->|HTTP Requests/Responses| Flask
+    Board -->|Game Events| Metrics
+    Board -->|Debug Info| Logs
+
+    %% External Access
+    Monitor[External Monitoring] -.->|Access| Metrics
+
+    %% Key Actions
+    UI -->|Arrow Keys| Game_JS
+    UI -->|New Game Button| Game_JS
+```
+
 # License
 
 This project is open-source and licensed under the MIT License.
